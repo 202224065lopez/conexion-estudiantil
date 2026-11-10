@@ -1,0 +1,141 @@
+<div class="page">
+
+  <header class="topbar">
+    <div>
+      <h1>Gestión de estudiantes</h1>
+      <p>Consulta y administra la información de los estudiantes.</p>
+    </div>
+
+    <button class="btn-primary" (click)="mostrarFormulario = !mostrarFormulario">
+      + Registrar estudiante
+    </button>
+  </header>
+
+  <section class="summary">
+    <div class="summary-card">
+      <span>👨‍🎓</span>
+      <div>
+        <p>Total de estudiantes</p>
+        <h2>{{ estudiantes.length }}</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <span>✅</span>
+      <div>
+        <p>Estudiantes activos</p>
+        <h2>{{ estudiantes.filter(e => e.estatus === 'Activo').length }}</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <span>⏳</span>
+      <div>
+        <p>Pendientes</p>
+        <h2>{{ estudiantes.filter(e => e.estatus === 'Pendiente').length }}</h2>
+      </div>
+    </div>
+  </section>
+
+  @if (mostrarFormulario) {
+    <section class="form-card">
+      <h2>Registrar nuevo estudiante</h2>
+
+      <form (ngSubmit)="guardarEstudiante()">
+        <div class="form-grid">
+          <label>
+            Matrícula
+            <input name="matricula" [(ngModel)]="nuevoEstudiante.matricula"
+              placeholder="Ej. 2024005" required>
+          </label>
+
+          <label>
+            Nombre completo
+            <input name="nombre" [(ngModel)]="nuevoEstudiante.nombre"
+              placeholder="Nombre del estudiante" required>
+          </label>
+
+          <label>
+            Correo electrónico
+            <input type="email" name="correo"
+              [(ngModel)]="nuevoEstudiante.correo"
+              placeholder="correo@tescha.edu.mx" required>
+          </label>
+
+          <label>
+            Carrera
+            <select name="carrera" [(ngModel)]="nuevoEstudiante.carrera" required>
+              <option value="">Seleccionar carrera</option>
+              <option>Ingeniería en Sistemas Computacionales</option>
+              <option>Ingeniería Industrial</option>
+              <option>Ingeniería Electromecánica</option>
+              <option>Ingeniería en Administración</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel"
+            (click)="mostrarFormulario = false">
+            Cancelar
+          </button>
+
+          <button type="submit" class="btn-primary">
+            Guardar estudiante
+          </button>
+        </div>
+      </form>
+    </section>
+  }
+
+  <section class="table-card">
+    <div class="table-heading">
+      <div>
+        <h2>Estudiantes registrados</h2>
+        <p>Listado general de estudiantes.</p>
+      </div>
+
+      <input class="search" type="text"
+        [(ngModel)]="busqueda"
+        placeholder="Buscar por nombre, matrícula o carrera...">
+    </div>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Carrera</th>
+            <th>Estatus</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (estudiante of estudiantesFiltrados; track estudiante.matricula) {
+            <tr>
+              <td>{{ estudiante.matricula }}</td>
+              <td>{{ estudiante.nombre }}</td>
+              <td>{{ estudiante.correo }}</td>
+              <td>{{ estudiante.carrera }}</td>
+              <td>
+                <span class="status"
+                  [class.inactivo]="estudiante.estatus === 'Pendiente'">
+                  {{ estudiante.estatus }}
+                </span>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="5" class="empty">
+                No se encontraron estudiantes.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>

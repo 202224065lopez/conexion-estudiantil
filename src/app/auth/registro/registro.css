@@ -1,0 +1,146 @@
+
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eaf2f8, #dcefe9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 850px;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(20, 50, 80, .12);
+}
+
+.register-header {
+  background: linear-gradient(135deg, #12385c, #087b83);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+}
+
+.brand-icon {
+  width: 55px;
+  height: 55px;
+  border: 2px solid white;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.register-header h1 {
+  margin: 15px 0 8px;
+}
+
+.register-header p {
+  color: #d8eeee;
+  margin: 0;
+}
+
+.register-form {
+  padding: 35px 45px;
+}
+
+.register-form h2 {
+  color: #173b5e;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #788795;
+  margin-bottom: 28px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  color: #34495e;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 9px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 13px;
+  border: 1px solid #d9e1e8;
+  border-radius: 8px;
+  outline: none;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #087b83;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 28px;
+  border: none;
+  border-radius: 8px;
+  background: #087b83;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-form button:hover {
+  background: #06666d;
+}
+
+.register-form button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.login-link {
+  text-align: center;
+  color: #657582;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #087b83;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .register-form {
+    padding: 25px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+}

@@ -1,0 +1,165 @@
+
+<div class="admin-layout">
+
+  <aside class="sidebar">
+
+    
+
+    <div class="profile">
+      <div class="avatar">A</div>
+
+      <div>
+        <strong>Administrador</strong>
+        <small>Panel administrativo</small>
+      </div>
+    </div>
+
+    <nav>
+      <p class="menu-title">MENÚ PRINCIPAL</p>
+
+      <a class="active" href="/administrador/dashboard">
+        📊 Dashboard
+      </a>
+
+      <a href="/administrador/estudiantes">
+        👨‍🎓 Estudiantes
+      </a>
+
+      <a href="#">
+        📚 Carreras
+      </a>
+
+
+      <a href="#">
+        📝 Evaluaciones
+      </a>
+
+      <a href="#">
+        ⚠️ Alertas de riesgo
+      </a>
+
+      <a href="#">
+        🤝 Seguimiento
+      </a>
+
+      <a href="#">
+        📈 Reportes
+      </a>
+
+      <p class="menu-title">CONFIGURACIÓN</p>
+
+      <a href="#">
+        ⚙️ Configuración
+      </a>
+
+      <a href="#">
+        🔒 Seguridad
+      </a>
+    </nav>
+
+    <a class="logout" href="/login">
+      ↩ Cerrar sesión
+    </a>
+
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h2>Panel administrativo</h2>
+        <p>Gestión y supervisión de Conexión Estudiantil</p>
+      </div>
+
+      <div class="admin-info">
+        <span>👤 Administrador</span>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <h1>¡Bienvenido, {{ nombreAdministrador }}!</h1>
+
+        <p>
+          Consulta el estado general de la institución y sus estudiantes.
+        </p>
+      </div>
+
+      <div class="welcome-icon">📊</div>
+    </section>
+
+    <section class="stats">
+
+      @for (dato of estadisticas; track dato.titulo) {
+        <article class="stat-card">
+
+          <div class="stat-icon" [class]="dato.color">
+            {{ dato.icono }}
+          </div>
+
+          <div>
+            <p>{{ dato.titulo }}</p>
+            <h2>{{ dato.valor }}</h2>
+          </div>
+
+        </article>
+      }
+
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <h2>Actividad reciente</h2>
+        <p>Últimos movimientos registrados en el sistema.</p>
+      </div>
+    </section>
+
+    <section class="table-container">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Estudiante</th>
+            <th>Actividad</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (actividad of actividades; track actividad.estudiante) {
+            <tr>
+              <td>{{ actividad.estudiante }}</td>
+              <td>{{ actividad.actividad }}</td>
+              <td>{{ actividad.fecha }}</td>
+
+              <td>
+                <span class="status">
+                  {{ actividad.estado }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="notice">
+      <div>
+        <h3>⚠️ Atención </h3>
+
+        <p>
+          Es importante revisar las alertas de seguimiento académico
+          para identificar estudiantes que puedan necesitar apoyo.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Conexión Estudiantil | TESCHA © 2026</p>
+    </footer>
+
+  </main>
+
+</div>

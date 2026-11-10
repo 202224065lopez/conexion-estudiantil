@@ -1,0 +1,139 @@
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+
+    <div class="menu-title">MENÚ PRINCIPAL</div>
+
+    <nav class="menu">
+      <a class="menu-item active">🏠 <span>Inicio</span></a>
+      <a class="menu-item">👤 <span>Mi perfil</span></a>
+      <a class="menu-item">🧠 <span>Evaluación vocacional</span></a>
+      <a class="menu-item">📊 <span>Resultados</span></a>
+      <a class="menu-item">🤝 <span>Seguimiento y apoyo</span></a>
+      <a class="menu-item">🔔 <span>Notificaciones</span></a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="support">
+        <span>¿Necesitas ayuda?</span>
+        <p>Estamos para apoyarte en tu trayectoria académica.</p>
+      </div>
+
+      <a class="logout" href="/login">↪ Cerrar sesión</a>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <span class="breadcrumb">Estudiante / Inicio</span>
+        <h2>Panel principal</h2>
+      </div>
+
+      <div class="user-info">
+        <div class="notification-icon">🔔</div>
+        <div class="avatar">E</div>
+        <div>
+          <strong>{{ nombreEstudiante }}</strong>
+          <small>Estudiante</small>
+        </div>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <span class="welcome-label">PLATAFORMA ESTUDIANTIL</span>
+        <h1>¡Bienvenido, {{ nombreEstudiante }}!</h1>
+        <p>Tu futuro comienza con cada paso que das. Consulta tu información y continúa avanzando.</p>
+      </div>
+      <div class="welcome-icon">🎓</div>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <h2>Mi información</h2>
+        <p>Resumen de tus datos académicos</p>
+      </div>
+    </section>
+
+    <section class="info-grid">
+
+      <article class="info-card">
+        <div class="card-icon blue">🎓</div>
+        <div>
+          <span>Carrera de interés</span>
+          <h3>{{ carrera }}</h3>
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="card-icon green">🪪</div>
+        <div>
+          <span>Matrícula</span>
+          <h3>{{ matricula }}</h3>
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="card-icon orange">📌</div>
+        <div>
+          <span>Situación académica</span>
+          <h3>Aspirante</h3>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <h2>Mis herramientas</h2>
+        <p>Accede a las funciones de tu cuenta</p>
+      </div>
+    </section>
+
+    <section class="tools-grid">
+
+      @for (acceso of accesos; track acceso.titulo) {
+        <article class="tool-card">
+          <div class="tool-icon">{{ acceso.icono }}</div>
+          <h3>{{ acceso.titulo }}</h3>
+          <p>{{ acceso.descripcion }}</p>
+          <button type="button">Consultar →</button>
+        </article>
+      }
+
+    </section>
+
+    <section class="bottom-grid">
+
+      <article class="panel">
+        <h2>Mis notificaciones</h2>
+        <p class="panel-subtitle">Información importante para ti</p>
+
+        @for (notificacion of notificaciones; track notificacion) {
+          <div class="notification-item">
+            <span class="notification-dot"></span>
+            <p>{{ notificacion }}</p>
+          </div>
+        }
+      </article>
+
+      <article class="panel progress-panel">
+        <div class="progress-icon">🌱</div>
+        <h2>Tu futuro importa</h2>
+        <p>Conexión Estudiantil te acompaña durante tu trayectoria académica para ayudarte a alcanzar tus objetivos.</p>
+      </article>
+
+    </section>
+
+    <footer>
+      © 2026 Conexión Estudiantil | Plataforma de seguimiento académico
+    </footer>
+
+  </main>
+
+</div>
